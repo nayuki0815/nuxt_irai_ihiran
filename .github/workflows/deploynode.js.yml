@@ -42,11 +42,14 @@ jobs:
         path: functions/lib
 
 
-deploy:
+
+  deploy:
     needs: build
     runs-on: ubuntu-latest
 
-steps:
+
+ 
+    steps:
     - name: Checkout Repo
       uses: actions/checkout@master
     - name: Download Artifact
@@ -66,9 +69,9 @@ steps:
     - name: Deploy to Firebase
       uses: w9jds/firebase-action@master
       with:
-        args: deploy
-
-env:
+        args: deploy    
+        
+      env:
         FIREBASE_TOKEN: ${{ 0eqxzHx48KQbXCgYIARAAGA4SNwF-L9Ir6OVPHvJM4Q6Ak_FOMqclPr1O_mM7V00A3LGHXH14zpuh2RFy7AmUa1J2u7kXBaS0ur8 }}
         PROJECT_ID: nuxt-irai-list
         
