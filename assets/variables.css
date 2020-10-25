@@ -1,0 +1,13 @@
+.tile {
+  margin: 5px;
+  border-radius: 4px;
+}
+
+.tile:hover {
+  background: "#F57c00";
+}
+
+.tile:active {
+  background: yellow;
+}
+/*# sourceMappingURL=variables.css.map */

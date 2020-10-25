@@ -1,0 +1,91 @@
+// Ref: https://github.com/nuxt-community/vuetify-module#customvariables
+//
+// The variables you want to modify
+// $font-size-root: 20px;
+
+// 参考にしたサイト20201021
+// https://github.com/vuetifyjs/vuetify/blob/master/packages/vuetify/src/styles/settings/_variables.scss
+
+// ......
+// 純粋なNuxtではassetsの中にcssファイルを作って、nuxt.config.jsで読み込めばスタイルシートが使えるはずなのですが、困ったことにVuetifyはデフォルトでstylusを使うのだそうで反応しません。
+// stylusって何だよと調べてみるとSassと同じようなスタイルシートの記法だそうで、$ほにゃららで上書き設定を入れなければいけないのだそうです。
+// ......
+
+//テーブルを表示するエリアの色ードロワーの色は、default.vusで直接ブルーブラックを指定した。
+
+$material-light: (
+  'background': #ececee,
+);
+
+$body-font-family: 'Roboto', 'ヒラギノ角ゴ', '游ゴシック', sans-serif !default;
+
+
+
+// $font-weight: 900;これは失敗
+
+// $font-size-root: 30px; 小さくなった！
+// $font-color: 'red';https://qiita.com/manabuyasuda/items/ae42db5604cd723fb3cd 反映されない
+
+// $font-color-root: 'red';　反映されない
+
+// https://vuetifyjs.com/en/features/sass-variables/#component-variables
+
+
+// .tile {
+//   padding: 0 .3em;
+//   transition: .3s;
+// }
+// .tile:hover {
+//   background: rgb(114, 59, 4) ;
+// }
+
+
+// // 下から上へ背景色 これは成功
+// .tile {
+//   padding: 0 .3em;
+//   background-image: linear-gradient(rgba(0,0,0,0) 50%, rgb(245, 124, 0) 50%);
+//   background-position: 0 0;
+//   background-size: auto 200%;
+//   transition: .3s;
+// }
+// .tile:hover {
+//   // background: rgb(245, 124, 0) ;
+//   background-position: 0 100%;
+//   color: #fff;
+// }
+
+
+
+
+
+
+// .tile {
+//   border-left: thick solid red;
+//   padding-left: 10px;
+// }
+
+
+.tile {
+  padding: 5px 10px 1px;
+}
+// .tile:hover {
+//   border-left: 2mm ridge #Ff4081;
+//   padding-left: 5px;
+// }
+
+.tile:hover {
+  background: rgba(141, 142, 201, 0.61) ;
+}
+
+.tile:focus {
+  border-left: 2mm ridge #Ff4081;
+  padding-left: 5px;
+}
+
+.tile2 {
+  // border-bottom: solid 3px #87CEFA;
+  background-position: 0 100%;
+  color: #fff;
+  border-left: 2mm ridge #Ff4081;
+  padding-left: 5px;
+}

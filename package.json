@@ -1,0 +1,46 @@
+{
+  "name": "irai-ichiran2",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build && npm run build:copy:ssr",
+    "build:copy:ssr": "rimraf functions/ssr && mkdirp functions/ssr && cpx '.nuxt/dist/**' functions/ssr/dist",
+    "start": "nuxt-ts start",
+    "deploy": "firebase deploy",
+    "generate": "nuxt-ts generate",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@mdi/font": "^5.7.55",
+    "@nuxt/typescript-runtime": "^2.0.0",
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/axios": "^5.12.2",
+    "cookie-parser": "^1.4.5",
+    "core-js": "^3.6.5",
+    "cpx": "^1.5.0",
+    "express-jwt": "^6.0.0",
+    "firebase": "^7.22.1",
+    "mkdirp": "^1.0.4",
+    "nuxt": "^2.14.5",
+    "rimraf": "^3.0.2",
+    "vue-class-component": "^7.2.6",
+    "vue-property-decorator": "^9.0.2",
+    "vuex-class": "^0.3.2",
+    "vuex-class-component": "^2.3.5"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.14.5",
+    "@nuxt/typescript-build": "^2.0.3",
+    "@nuxtjs/vuetify": "^1.11.2",
+    "@vue/test-utils": "^1.1.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^26.3.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.1",
+    "ts-jest": "^26.3.0",
+    "vue-jest": "^3.0.4"
+  }
+}
