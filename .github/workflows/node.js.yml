@@ -24,6 +24,53 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run build
+        npm run build --prefix ./functions
+    - name: Archive Production Artifact Dist
+      uses: actions/upload-artifact@master
+      with:
+        name: dist
+        path: functions/ssr/dist
+    - name: Archive Production Artifact Lib
+      uses: actions/upload-artifact@master
+      with:
+        name: lib
+        path: functions/lib
+
+
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+
+ 
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@master
+    - name: Download Artifact
+      uses: actions/download-artifact@master
+      with:
+        name: dist
+        path: functions/ssr/dist
+    - name: Download Artifact
+      uses: actions/download-artifact@master
+      with:
+        name: lib
+        path: functions/lib
+    - name: npm install
+      run: |
+        npm install
+        npm --prefix ./functions install ./functions
+    - name: Deploy to Firebase
+      uses: w9jds/firebase-action@master
+      with:
+        args: deploy    
+        
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        PROJECT_ID: "nuxt-irai-list"  
+        
